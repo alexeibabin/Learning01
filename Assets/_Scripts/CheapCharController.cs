@@ -10,15 +10,21 @@ public class CheapCharController : MonoBehaviour
 
     CharacterActions ca;
 
-    private void Start() {
+    void Start() {
         InputManager.OnDeviceAttached += OnDeviceAttached;
-
         ca = CharacterActions.GetDefaultPlayerActions();
+
+        Debug.LogFormat("Currently active device: {0}", InputManager.ActiveDevice);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(ca.MoveForward.WasPressed) 
+        {
+            Debug.LogFormat("Went forward: {0} ", ca.Move.Value);
+        }
+
         if(ca.Move.HasChanged)
         {
             MoveCharacter(ca.Move.Value);
