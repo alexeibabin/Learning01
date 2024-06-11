@@ -24,8 +24,8 @@ public class WindowsManager : AbstractProvider<Type, BaseWindow>
 {
     private static readonly List<WindowProperties> _gameWindows = new List<WindowProperties>()
     {
-        new WindowProperties(LoadingWindow, WindowCanvasType.UI, WindowPriorityType.High, WindowLayerType.Loading),
-        new WindowProperties(MainMenuWindow, WindowCanvasType.UI, WindowPriorityType.Medium, WindowLayerType.Overlay)
+        new WindowProperties(typeof(LoadingWindow), WindowCanvasType.UI, WindowPriorityType.High, WindowLayerType.Loading),
+        new WindowProperties(typeof(MainMenuWindow), WindowCanvasType.UI, WindowPriorityType.Medium, WindowLayerType.Overlay)
     };
 
     private readonly Dictionary<WindowLayerType, Type> _activeWindows = new Dictionary<WindowLayerType, Type>();
