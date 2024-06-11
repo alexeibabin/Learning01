@@ -31,6 +31,11 @@ public class CharacterActions : PlayerActionSet
         ca.MoveForward.AddDefaultBinding(Key.W, Key.UpArrow);
         ca.MoveBackward.AddDefaultBinding(Key.S, Key.DownArrow);
 
+        ca.ListenOptions.IncludeKeys = true;
+        ca.ListenOptions.IncludeMouseButtons = true;
+        ca.ListenOptions.IncludeUnknownControllers = true;
+        ca.ListenOptions.MaxAllowedBindings = 4;
+
         return ca;
     }
 }

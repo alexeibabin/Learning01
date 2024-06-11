@@ -10,9 +10,10 @@ public class CheapCharController : MonoBehaviour
 
     CharacterActions ca;
 
-    void Start() {
+    void Awake() {
         InputManager.OnDeviceAttached += OnDeviceAttached;
         ca = CharacterActions.GetDefaultPlayerActions();
+        ca.Enabled = true;
 
         Debug.LogFormat("Currently active device: {0}", InputManager.ActiveDevice);
     }
@@ -20,7 +21,7 @@ public class CheapCharController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(ca.MoveForward.WasPressed) 
+        if(ca.MoveForward.WasReleased) 
         {
             Debug.LogFormat("Went forward: {0} ", ca.Move.Value);
         }
@@ -39,7 +40,7 @@ public class CheapCharController : MonoBehaviour
 
     private void OnDeviceAttached(InputDevice device)
     {
-        Debug.LogFormat("Current device : {0}", device.ToString());
+        Debug.LogFormat("Current device : {0}", device.GetType());
     }
 
     private void MoveCharacter(Vector2 axis) {
