@@ -1,0 +1,1067 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plus One - Pitch Deck</title>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            overflow: hidden;
+        }
+
+        .stylized-text {
+            font-family: 'Righteous', cursive;
+        }
+
+        .presentation {
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .slide {
+            min-width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 60px;
+            position: relative;
+        }
+
+        @media (max-width: 768px) {
+            .slide {
+                padding: 20px;
+            }
+        }
+
+        /* Slide 1 - Title */
+        .slide-1 {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #2a2a2a 100%);
+        }
+
+        .logo {
+            width: 200px;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 80px;
+            color: white;
+            font-weight: bold;
+            margin-bottom: 40px;
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.4);
+        }
+
+        .title {
+            font-size: 72px;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .subtitle {
+            font-size: 28px;
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .logo {
+                width: 120px;
+                height: 120px;
+                font-size: 50px;
+                margin-bottom: 20px;
+            }
+
+            .title {
+                font-size: 36px;
+            }
+
+            .subtitle {
+                font-size: 18px;
+            }
+        }
+
+        /* Slide 2+ */
+        .slide-2 {
+            background: linear-gradient(135deg, #2a2a2a 0%, #000000 100%);
+        }
+
+        .content-wrapper {
+            max-width: 1200px;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .content-wrapper {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+
+        .text-content {
+            flex: 1;
+            color: white;
+        }
+
+        .text-content h2 {
+            font-size: 48px;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .text-content p {
+            font-size: 22px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .text-content h2 {
+                font-size: 28px;
+                margin-bottom: 15px;
+            }
+
+            .text-content p {
+                font-size: 16px;
+            }
+        }
+
+        .highlight-box {
+            background: rgba(102, 126, 234, 0.15);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin-top: 25px;
+            border-radius: 8px;
+        }
+
+        .highlight-box p {
+            font-size: 20px;
+            font-weight: 600;
+            color: #667eea;
+            margin: 0;
+        }
+
+        .phone-mockup {
+            width: 350px;
+            height: 700px;
+            background: #1a1a1a;
+            border-radius: 40px;
+            padding: 15px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 3px solid #333;
+        }
+
+        @media (max-width: 768px) {
+            .phone-mockup {
+                width: 280px;
+                height: 560px;
+                padding: 12px;
+                border-radius: 30px;
+            }
+        }
+
+        .phone-screen {
+            width: 100%;
+            height: 100%;
+            background: #000000;
+            border-radius: 30px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .status-bar {
+            height: 30px;
+            background: #000000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 15px;
+            font-size: 12px;
+            color: white;
+        }
+
+        .feed-header {
+            padding: 15px;
+            background: #000000;
+            border-bottom: 1px solid #262626;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .feed-content {
+            padding: 0;
+            overflow-y: auto;
+            height: calc(100% - 140px);
+            background: #000000;
+        }
+
+        .feed-content::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .feed-content::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        .feed-content::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        .post {
+            background: #000000;
+            border-bottom: 1px solid #262626;
+            padding: 15px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin-right: 10px;
+        }
+
+        .post-author {
+            font-weight: 600;
+            font-size: 14px;
+            color: white;
+        }
+
+        .post-meta {
+            font-size: 11px;
+            color: #999;
+        }
+
+        .post-content {
+            font-size: 14px;
+            line-height: 1.5;
+            color: #e0e0e0;
+            margin-bottom: 10px;
+        }
+
+        .post-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 8px;
+            margin: 10px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 48px;
+        }
+
+        .post-reactions {
+            display: flex;
+            gap: 12px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #1a1a1a;
+        }
+
+        .reaction {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-size: 13px;
+            color: #999;
+        }
+
+        .reaction-emoji {
+            font-size: 16px;
+        }
+
+        .plus-one-button {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Handshake */
+        .handshake-screen {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 30px;
+        }
+
+        .handshake-icon {
+            font-size: 120px;
+            margin-bottom: 30px;
+        }
+
+        .handshake-text {
+            color: white;
+            text-align: center;
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+
+        .connecting-animation {
+            width: 200px;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 2px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .connecting-bar {
+            width: 60%;
+            height: 100%;
+            background: white;
+            border-radius: 2px;
+            animation: connecting 2s ease-in-out infinite;
+        }
+
+        @keyframes connecting {
+            0%, 100% { transform: translateX(-100%); }
+            50% { transform: translateX(200%); }
+        }
+
+        /* Circles */
+        .circles-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 600px;
+            height: 600px;
+        }
+
+        @media (max-width: 768px) {
+            .circles-diagram {
+                width: 300px;
+                height: 300px;
+            }
+        }
+
+        .circle {
+            position: absolute;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 600;
+        }
+
+        .circle-1 {
+            width: 150px;
+            height: 150px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            z-index: 3;
+        }
+
+        .circle-2 {
+            width: 350px;
+            height: 350px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.5) 0%, rgba(118, 75, 162, 0.5) 100%);
+            z-index: 2;
+        }
+
+        .circle-3 {
+            width: 550px;
+            height: 550px;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.2) 0%, rgba(118, 75, 162, 0.2) 100%);
+            z-index: 1;
+        }
+
+        @media (max-width: 768px) {
+            .circle-1 {
+                width: 75px;
+                height: 75px;
+                font-size: 14px;
+            }
+
+            .circle-2 {
+                width: 175px;
+                height: 175px;
+                font-size: 12px;
+            }
+
+            .circle-3 {
+                width: 275px;
+                height: 275px;
+            }
+        }
+
+        /* Groups */
+        .groups-scroll {
+            overflow-y: auto;
+            height: calc(100% - 60px);
+            padding: 15px;
+        }
+
+        .groups-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        .groups-scroll::-webkit-scrollbar-track {
+            background: #000000;
+        }
+
+        .groups-scroll::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 3px;
+        }
+
+        .group-card {
+            background: #1a1a1a;
+            border-radius: 15px;
+            padding: 20px;
+            border: 1px solid #262626;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .group-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            flex-shrink: 0;
+        }
+
+        .group-info {
+            flex: 1;
+        }
+
+        .group-name {
+            font-weight: 600;
+            font-size: 16px;
+            color: white;
+            margin-bottom: 4px;
+        }
+
+        .group-members {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* Nested Circles */
+        .nested-circles {
+            position: relative;
+            width: 500px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .outer-ring {
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .inner-ring {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .nested-circles {
+                width: 300px;
+                height: 300px;
+            }
+
+            .outer-ring {
+                width: 300px;
+                height: 300px;
+            }
+
+            .inner-ring {
+                width: 180px;
+                height: 180px;
+            }
+        }
+
+        .circle-label {
+            position: absolute;
+            color: white;
+            font-weight: 600;
+            font-size: 20px;
+        }
+
+        .outer-label {
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Review */
+        .review-screen {
+            background: #000000;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .birthday-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+
+        .review-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 15px;
+        }
+
+        .review-subtitle {
+            font-size: 16px;
+            color: #999;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .friend-list {
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .friend-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            background: #1a1a1a;
+            border-radius: 10px;
+            margin-bottom: 10px;
+        }
+
+        .friend-info {
+            display: flex;
+            align-items: center;
+        }
+
+        .friend-name {
+            font-size: 14px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .keep-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+
+        /* Features */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            max-width: 1000px;
+        }
+
+        @media (max-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid rgba(102, 126, 234, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+
+        .feature-title {
+            color: white;
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Navigation */
+        .nav-controls {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+            z-index: 1000;
+        }
+
+        .nav-button {
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        @media (max-width: 768px) {
+            .nav-controls {
+                bottom: 15px;
+                gap: 10px;
+            }
+
+            .nav-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+        }
+
+        .slide-indicator {
+            position: fixed;
+            top: 30px;
+            right: 30px;
+            color: white;
+            font-size: 18px;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <div id="passwordOverlay" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; z-index: 10000;">
+        <div style="background: white; padding: 40px; border-radius: 20px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); text-align: center; max-width: 400px;">
+            <div style="font-size: 60px; margin-bottom: 20px;">🔒</div>
+            <h2 style="font-family: 'Righteous', cursive; font-size: 32px; color: #333; margin-bottom: 10px;">Plus One</h2>
+            <p style="color: #666; margin-bottom: 30px;">Enter password to view presentation</p>
+            <input type="password" id="passwordInput" placeholder="Enter password" style="width: 100%; padding: 15px; border: 2px solid #ddd; border-radius: 10px; font-size: 16px; margin-bottom: 20px; box-sizing: border-box;">
+            <button onclick="checkPassword()" style="width: 100%; padding: 15px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; border: none; border-radius: 10px; font-size: 16px; font-weight: 600; cursor: pointer;">Unlock</button>
+            <p id="errorMessage" style="color: #e74c3c; margin-top: 15px; font-size: 14px; display: none;">Incorrect password</p>
+        </div>
+    </div>
+
+    <div class="slide-indicator">
+        <span id="currentSlide">1</span> / 8
+    </div>
+
+    <div class="presentation" id="presentation">
+        <!-- Slide 1 -->
+        <div class="slide slide-1">
+            <div class="logo stylized-text">+1</div>
+            <h1 class="title stylized-text">Plus One</h1>
+            <p class="subtitle">Connect with the people you actually know</p>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide slide-2">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h2>Real Connections Only</h2>
+                    <p>Plus One is a social network where you can only add friends by meeting them in person.</p>
+                    <div class="highlight-box">
+                        <p>📢 Your feed includes posts from direct friends AND friends of friends</p>
+                    </div>
+                </div>
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="status-bar">
+                            <span>9:41</span>
+                            <span>●●●●</span>
+                        </div>
+                        <div class="feed-header">
+                            <span class="stylized-text">+1 Feed</span>
+                            <span>☰</span>
+                        </div>
+                        <div class="feed-content">
+                            <div class="post">
+                                <div class="post-header">
+                                    <div class="avatar"></div>
+                                    <div>
+                                        <div class="post-author">Sarah Chen</div>
+                                        <div class="post-meta">2h ago • Direct friend</div>
+                                    </div>
+                                </div>
+                                <div class="post-content">Just finished the mountain trail hike! 🏔️</div>
+                                <div class="post-image">🏔️</div>
+                                <div class="post-reactions">
+                                    <div class="reaction"><span class="reaction-emoji">❤️</span><span>12</span></div>
+                                    <div class="reaction"><span class="reaction-emoji">🔥</span><span>8</span></div>
+                                </div>
+                            </div>
+                            <div class="post">
+                                <div class="post-header">
+                                    <div class="avatar"></div>
+                                    <div>
+                                        <div class="post-author">Marcus Johnson</div>
+                                        <div class="post-meta">5h ago • Friend of Alex</div>
+                                    </div>
+                                </div>
+                                <div class="post-content">What's everyone's favorite coffee shop?</div>
+                                <div class="post-reactions">
+                                    <div class="reaction"><span class="reaction-emoji">☕</span><span>15</span></div>
+                                    <div class="reaction"><span class="reaction-emoji">💬</span><span>23</span></div>
+                                </div>
+                            </div>
+                            <div class="post">
+                                <div class="post-header">
+                                    <div class="avatar"></div>
+                                    <div>
+                                        <div class="post-author">Emma Rodriguez</div>
+                                        <div class="post-meta">1d ago • Direct friend</div>
+                                    </div>
+                                </div>
+                                <div class="post-content">Book club next Tuesday! 📚</div>
+                                <div class="post-reactions">
+                                    <div class="reaction"><span class="reaction-emoji">👍</span><span>9</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="plus-one-button stylized-text">+1</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide slide-2">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h2>The Digital Handshake</h2>
+                    <p>To add someone, meet them in person and tap your phones together.</p>
+                </div>
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="handshake-screen">
+                            <div class="handshake-icon">🤝</div>
+                            <div class="handshake-text stylized-text">Ready to connect?<br>Bring your phones together</div>
+                            <div class="connecting-animation"><div class="connecting-bar"></div></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide slide-2">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h2>Your Circle Expands Naturally</h2>
+                    <p>Start with your closest friends, then connect with their friends through introductions.</p>
+                </div>
+                <div class="circles-diagram">
+                    <div class="circle circle-3"></div>
+                    <div class="circle circle-2"><span style="position: absolute; top: 60px;">Friends of Friends</span></div>
+                    <div class="circle circle-1">You</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide slide-2">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h2>Inner Circles for What Matters</h2>
+                    <p>Create groups based on shared interests.</p>
+                </div>
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="feed-header">
+                            <span class="stylized-text">My Groups</span>
+                            <span>+</span>
+                        </div>
+                        <div class="groups-scroll">
+                            <div class="group-card">
+                                <div class="group-icon">🏃</div>
+                                <div class="group-info">
+                                    <div class="group-name">Running Club</div>
+                                    <div class="group-members">8 members</div>
+                                </div>
+                            </div>
+                            <div class="group-card">
+                                <div class="group-icon">📚</div>
+                                <div class="group-info">
+                                    <div class="group-name">Book Lovers</div>
+                                    <div class="group-members">12 members</div>
+                                </div>
+                            </div>
+                            <div class="group-card">
+                                <div class="group-icon">🎮</div>
+                                <div class="group-info">
+                                    <div class="group-name">Game Night</div>
+                                    <div class="group-members">6 members</div>
+                                </div>
+                            </div>
+                            <div class="group-card">
+                                <div class="group-icon">☕</div>
+                                <div class="group-info">
+                                    <div class="group-name">Coffee Crew</div>
+                                    <div class="group-members">15 members</div>
+                                </div>
+                            </div>
+                            <div class="group-card">
+                                <div class="group-icon">🎨</div>
+                                <div class="group-info">
+                                    <div class="group-name">Art & Design</div>
+                                    <div class="group-members">9 members</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="slide slide-2">
+            <div class="content-wrapper" style="flex-direction: column;">
+                <div class="text-content" style="text-align: center; margin-bottom: 50px;">
+                    <h2>Two Levels of Connection</h2>
+                    <p>Inner circle sees everything. Outer circle connects through introductions.</p>
+                </div>
+                <div class="nested-circles">
+                    <div class="outer-ring">
+                        <div class="circle-label outer-label">Friends of Friends (Outer)</div>
+                        <div class="inner-ring">
+                            <div style="font-size: 24px; font-weight: 700;">Direct Friends</div>
+                            <div style="font-size: 16px; margin-top: 8px;">(Inner)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 7 -->
+        <div class="slide slide-2">
+            <div class="content-wrapper">
+                <div class="text-content">
+                    <h2>Keep Your Circle Fresh</h2>
+                    <p>Annual connection anniversary to reflect on friendships.</p>
+                </div>
+                <div class="phone-mockup">
+                    <div class="phone-screen">
+                        <div class="review-screen">
+                            <div class="birthday-icon">🎂</div>
+                            <div class="review-title stylized-text">Connection Anniversary</div>
+                            <div class="review-subtitle">You've been connected for 1 year!</div>
+                            <div class="friend-list">
+                                <div class="friend-item">
+                                    <div class="friend-info">
+                                        <div class="avatar" style="width: 35px; height: 35px; margin-right: 10px;"></div>
+                                        <div class="friend-name">Alex Kim</div>
+                                    </div>
+                                    <button class="keep-button">Keep ✓</button>
+                                </div>
+                                <div class="friend-item">
+                                    <div class="friend-info">
+                                        <div class="avatar" style="width: 35px; height: 35px; margin-right: 10px;"></div>
+                                        <div class="friend-name">Jordan Lee</div>
+                                    </div>
+                                    <button class="keep-button">Keep ✓</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Slide 8 -->
+        <div class="slide slide-2">
+            <div class="content-wrapper" style="flex-direction: column;">
+                <div class="text-content" style="text-align: center; margin-bottom: 50px;">
+                    <h2>The Future of Plus One</h2>
+                    <p>Features that enhance real-world connections.</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🛍️</div>
+                        <div class="feature-title">Marketplace</div>
+                        <div class="feature-desc">Buy and sell within your network</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💬</div>
+                        <div class="feature-title">Group Chats</div>
+                        <div class="feature-desc">Real-time conversations</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📺</div>
+                        <div class="feature-title">Live Streaming</div>
+                        <div class="feature-desc">Share moments live</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">📅</div>
+                        <div class="feature-title">Event Planning</div>
+                        <div class="feature-desc">Coordinate meetups</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎁</div>
+                        <div class="feature-title">Gift Registry</div>
+                        <div class="feature-desc">Know what friends want</div>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🔒</div>
+                        <div class="feature-title">Privacy First</div>
+                        <div class="feature-desc">Your data stays with you</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-controls">
+        <button class="nav-button" id="prevBtn">← Previous</button>
+        <button class="nav-button" id="nextBtn">Next →</button>
+    </div>
+
+    <script>
+        function checkPassword() {
+            const input = document.getElementById('passwordInput');
+            const errorMsg = document.getElementById('errorMessage');
+            const overlay = document.getElementById('passwordOverlay');
+            
+            // Simple obfuscation - stored as encoded array
+            const correctPass = [51,49,48,56,49,57,56,55].map(c => String.fromCharCode(c)).join('');
+            
+            if (input.value === correctPass) {
+                overlay.style.display = 'none';
+            } else {
+                errorMsg.style.display = 'block';
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+
+        let currentSlide = 0;
+        const totalSlides = 8;
+        const presentation = document.getElementById('presentation');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const slideIndicator = document.getElementById('currentSlide');
+
+        function updateSlide() {
+            presentation.style.transform = `translateX(-${currentSlide * 100}vw)`;
+            slideIndicator.textContent = currentSlide + 1;
+            prevBtn.style.opacity = currentSlide === 0 ? '0.5' : '1';
+            nextBtn.style.opacity = currentSlide === totalSlides - 1 ? '0.5' : '1';
+        }
+
+        prevBtn.addEventListener('click', () => {
+            if (currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            }
+        });
+
+        nextBtn.addEventListener('click', () => {
+            if (currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft' && currentSlide > 0) {
+                currentSlide--;
+                updateSlide();
+            } else if (e.key === 'ArrowRight' && currentSlide < totalSlides - 1) {
+                currentSlide++;
+                updateSlide();
+            }
+        });
+
+        updateSlide();
+    </script>
+</body>
+</html>
