@@ -12,9 +12,9 @@ public class CameraSettings : ScriptableObject
     public float maxPitch =  60f;
 
     [Header("Zoom")]
-    public float minZoom        =  2f;
-    public float maxZoom        = 14f;
-    public float zoomSpeed      = 0.02f;
+    public int numZoomSteps     = 15;
+    public float minZoomDistance = 2f;
+    public float maxZoomDistance = 12f;
     public float zoomSmoothTime = 0.12f;
 
     [Header("Follow")]

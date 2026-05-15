@@ -9,6 +9,7 @@ public class CameraController : MonoBehaviour
 
     float _yaw;
     float _pitch;
+    int _currentZoomStep = 8;
     float _targetDistance = 6f;
     float _currentDistance = 6f;
     float _distanceVelocity;
@@ -23,6 +24,14 @@ public class CameraController : MonoBehaviour
         _focusPoint = _target != null && _settings != null
             ? _target.position + Vector3.up * _settings.pivotHeight
             : transform.position;
+
+        if (_settings != null)
+        {
+            _targetDistance = 6f;
+            _currentDistance = 6f;
+            _currentZoomStep = Mathf.RoundToInt(1f + (_targetDistance - _settings.minZoomDistance) / (_settings.maxZoomDistance - _settings.minZoomDistance) * (_settings.numZoomSteps - 1f));
+            _currentZoomStep = Mathf.Clamp(_currentZoomStep, 1, _settings.numZoomSteps);
+        }
     }
 
     void OnEnable() => Cursor.lockState = CursorLockMode.Locked;
@@ -64,7 +73,11 @@ public class CameraController : MonoBehaviour
     void ReadZoom()
     {
         float scroll = Mouse.current.scroll.ReadValue().y;
-        _targetDistance = Mathf.Clamp(_targetDistance - scroll * _settings.zoomSpeed, _settings.minZoom, _settings.maxZoom);
+        if (scroll != 0f)
+        {
+            _currentZoomStep = Mathf.Clamp(_currentZoomStep + (int)Mathf.Sign(scroll), 1, _settings.numZoomSteps);
+            _targetDistance = Mathf.Lerp(_settings.minZoomDistance, _settings.maxZoomDistance, (_currentZoomStep - 1f) / (_settings.numZoomSteps - 1f));
+        }
         _currentDistance = Mathf.SmoothDamp(_currentDistance, _targetDistance, ref _distanceVelocity, _settings.zoomSmoothTime, float.MaxValue, Time.unscaledDeltaTime);
     }
 

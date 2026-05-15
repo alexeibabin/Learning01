@@ -56,7 +56,15 @@
       "WebFetch(domain:www.unrealengine.com)",
       "WebFetch(domain:www.opensourceagenda.com)",
       "WebFetch(domain:nerivec.github.io)",
-      "PowerShell(\"CameraFollow deleted\")"
+      "PowerShell(\"CameraFollow deleted\")",
+      "Bash(unityctl prefab *)",
+      "Bash(unityctl record *)",
+      "Bash(unityctl screenshot *)",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\Supreme\\\\Documents\\\\Unity Projects\\\\Learning01\" -Recurse -Directory)",
+      "Bash(Select-Object -First 20)",
+      "Bash(Format-Table FullName)",
+      "Bash(find \"/c/Users/Supreme/.claude/projects\" -type f -name \"*.md\" 2>/dev/null | head -5)",
+      "Read(//c/Users/Supreme/.claude/projects/**)"
     ]
   }
 }

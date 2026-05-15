@@ -19,6 +19,24 @@ public class InputManager
         return _actions.Player.GetMoveValue();
     }
 
+    public static bool GetJumpDown()
+    {
+        Initialize();
+        return _actions.Player.GetJumpDown();
+    }
+
+    public static bool GetJumpHeld()
+    {
+        Initialize();
+        return _actions.Player.GetJumpHeld();
+    }
+
+    public static bool GetJumpUp()
+    {
+        Initialize();
+        return _actions.Player.GetJumpUp();
+    }
+
     public static void Dispose()
     {
         _actions?.Dispose();

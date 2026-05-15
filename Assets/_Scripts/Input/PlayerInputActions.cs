@@ -27,30 +27,42 @@ public class PlayerInputActions
 
     public class PlayerActions
     {
-        private Keyboard _keyboard;
-
-        public PlayerActions()
-        {
-            _keyboard = Keyboard.current;
-        }
-
         public Vector2 GetMoveValue()
         {
-            if (_keyboard == null) return Vector2.zero;
+            var keyboard = Keyboard.current;
+            if (keyboard == null) return Vector2.zero;
 
             Vector2 move = Vector2.zero;
 
             // WASD keys
-            if (_keyboard.wKey.isPressed || _keyboard.upArrowKey.isPressed)
+            if (keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed)
                 move.y += 1;
-            if (_keyboard.sKey.isPressed || _keyboard.downArrowKey.isPressed)
+            if (keyboard.sKey.isPressed || keyboard.downArrowKey.isPressed)
                 move.y -= 1;
-            if (_keyboard.dKey.isPressed || _keyboard.rightArrowKey.isPressed)
+            if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed)
                 move.x += 1;
-            if (_keyboard.aKey.isPressed || _keyboard.leftArrowKey.isPressed)
+            if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed)
                 move.x -= 1;
 
             return move.normalized;
+        }
+
+        public bool GetJumpDown()
+        {
+            var keyboard = Keyboard.current;
+            return keyboard != null && keyboard.spaceKey.wasPressedThisFrame;
+        }
+
+        public bool GetJumpHeld()
+        {
+            var keyboard = Keyboard.current;
+            return keyboard != null && keyboard.spaceKey.isPressed;
+        }
+
+        public bool GetJumpUp()
+        {
+            var keyboard = Keyboard.current;
+            return keyboard != null && keyboard.spaceKey.wasReleasedThisFrame;
         }
     }
 }
