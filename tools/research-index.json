@@ -1,0 +1,47 @@
+{
+  "version": 1,
+  "updated": "2026-05-15",
+  "entries": [
+    {
+      "file": "Assets/_Docs/Research/jump-mechanics-botw.md",
+      "title": "Jump Mechanics — Breath of the Wild Research",
+      "date": "2026-05-15",
+      "category": "game-design",
+      "topics": ["jump", "coyote-time", "apex-modifier", "variable-jump", "BotW", "frame-data", "fall-multiplier", "jump-buffer"],
+      "summary": "Confirmed BotW frame data at 30fps. Coyote time 6-8f, buffer 6f, fall multiplier 2.0-2.5x, asymmetric arc. All features we considered removing are present — tuning was wrong, mechanics were right.",
+      "sources": ["BotW speedrunning community", "ZeldaSpeedRuns Discord", "Waikuteru YouTube"],
+      "query": "BotW jump mechanics frame data"
+    },
+    {
+      "file": "Assets/_Docs/Research/parkour-momentum.md",
+      "title": "Parkour Momentum Mechanics — Research",
+      "date": "2026-05-15",
+      "category": "game-design",
+      "topics": ["parkour", "momentum", "carry-over", "landing", "Mirror's Edge", "Dying Light", "Ghostrunner", "Titanfall 2"],
+      "summary": "Three momentum patterns: carry-over, building, and as resource. Game-by-game breakdown with parameter ranges. Landing is the critical moment where planted vs. carry-over shows.",
+      "sources": ["80.lv", "GDC talks", "Game Developer Magazine"],
+      "query": "parkour momentum mechanics game design"
+    },
+    {
+      "file": "Assets/_Docs/Research/tachyon-flow-reference.md",
+      "title": "Tachyon Flow (JankyAnims) — Character Controller Reference",
+      "date": "2026-05-15",
+      "category": "comparable",
+      "topics": ["character-controller", "animation", "momentum", "tachyon-flow", "lerp", "stopping", "wall-run", "IK"],
+      "summary": "Detailed breakdown of Tachyon Flow's controller — target feel reference for this project. Smoothness is 90% animation, not code. Key: lerp-to-zero on stop, forward speed carry-over on jump, momentum build-up.",
+      "sources": ["Reddit r/Unity3D", "80.lv", "JankyAnims dev comments"],
+      "query": "Tachyon Flow character controller feel"
+    },
+    {
+      "file": "Assets/_Docs/Research/jump-system-current-state.md",
+      "title": "Jump System — Current State",
+      "date": "2026-05-15",
+      "category": "unity",
+      "topics": ["jump-system", "JumpSettings", "tuning", "current-state", "known-issues"],
+      "summary": "Current JumpSettings values, how the controller uses them, known issues list, full tuning history. Living document — updated as the system evolves.",
+      "sources": ["Project source"],
+      "query": "jump system current implementation state"
+    }
+  ],
+  "query_log": []
+}

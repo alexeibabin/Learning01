@@ -219,4 +219,37 @@ When the user corrects a plan, notes a preference, or makes a recurring choice �
 
 ---
 
+## Research Tools
+
+A comprehensive research CLI lives in `tools/research.py`. Claude Code invokes it autonomously when research is needed (design patterns, game comparisons, Unity docs, GDC talks, architecture examples).
+
+**Setup (one-time):**
+```bash
+pip install -r tools/requirements.txt
+```
+
+**Commands:**
+- `python tools/research.py search "<query>" [--depth 1-5] [--category CATEGORY]` — Web search + scrape
+- `python tools/research.py scrape <url>` — Extract clean text from any URL
+- `python tools/research.py youtube <url|query>` — YouTube transcript extraction
+- `python tools/research.py github "<query>" [--language csharp]` — GitHub code search
+- `python tools/research.py research "<topic>" [--depth 1-5] [--category CATEGORY]` — Full pipeline
+
+**Categories (domain bias):** `unity`, `game-design`, `comparable`, `shaders`, `multiplayer`, `procgen`, `performance`, `animation`, `architecture`
+
+**Depth levels (1-5):** 1=quick, 3=standard, 5=exhaustive. Depth 4+ includes YouTube and GitHub.
+
+**Output:** Markdown reports saved to `tools/reports/` + printed to stdout.
+
+**Backends (all free, no API keys):**
+- Jina Search/Reader (AI-optimized web extraction)
+- YouTube Transcript API + yt-dlp
+- GitHub public REST API
+- DuckDuckGo (fallback)
+- Beautiful Soup (fallback)
+
+The skill (`.claude/skills/research/SKILL.md`) documents invocation patterns. Claude uses this automatically for research questions — no manual invocation needed.
+
+---
+
 *Last updated: 2026-05-15*
