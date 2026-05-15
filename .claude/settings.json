@@ -42,7 +42,21 @@
       "Bash(unityctl asset *)",
       "Bash(unityctl play *)",
       "Bash(unityctl logs *)",
-      "Bash(unityctl snapshot *)"
+      "Bash(unityctl snapshot *)",
+      "Bash(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\Supreme\\\\Documents\\\\Unity Projects\\\\Learning01\\\\Assets\\\\_Scripts\\\\Input\")",
+      "Bash(Out-Null)",
+      "PowerShell(New-Item -ItemType Directory -Force -Path \"c:\\\\Users\\\\Supreme\\\\Documents\\\\Unity Projects\\\\Learning01\\\\Assets\\\\_Scripts\\\\Input\")",
+      "PowerShell(ls \"c:\\\\Users\\\\Supreme\\\\Documents\\\\Unity Projects\\\\Learning01\\\\Assets\\\\_Scripts\\\\Input\\\\\" -Force)",
+      "Bash(unityctl play-mode *)",
+      "PowerShell(code --version)",
+      "Bash(unityctl menu *)",
+      "Read(//temp/readonly/**)",
+      "Read(//c/temp/readonly/**)",
+      "WebFetch(domain:catlikecoding.com)",
+      "WebFetch(domain:www.unrealengine.com)",
+      "WebFetch(domain:www.opensourceagenda.com)",
+      "WebFetch(domain:nerivec.github.io)",
+      "PowerShell(\"CameraFollow deleted\")"
     ]
   }
 }

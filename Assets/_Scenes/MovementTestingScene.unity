@@ -144,14 +144,14 @@ Light:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146602036}
   m_Enabled: 1
-  serializedVersion: 11
+  serializedVersion: 12
   m_Type: 1
   m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
-  m_CookieSize: 10
+  m_CookieSize2D: {x: 10, y: 10}
   m_Shadows:
     m_Type: 2
     m_Resolution: -1
@@ -227,6 +227,7 @@ GameObject:
   - component: {fileID: 264473726}
   - component: {fileID: 264473725}
   - component: {fileID: 264473724}
+  - component: {fileID: 264473727}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -308,6 +309,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 29.49, y: 0, z: 0}
+--- !u!114 &264473727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 264473723}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2f790be0e1aae5140827ec74b2977752, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  _target: {fileID: 4540228999468650950}
+  _settings: {fileID: 11400000, guid: 31a3c9c1448adc24d922b6159fee2771, type: 2}
 --- !u!1 &1007115756
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,6 +444,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterAnimator: {fileID: 4540228999468650947}
+  _camera: {fileID: 264473726}
+  _moveSpeed: 4
+  _rotationSpeed: 720
+--- !u!143 &4540228999468650949
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1782702501305164316}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!4 &4540228999468650950 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8311206263125656049, guid: d81c249ff3f4a904c9a1c3cc45d110e7, type: 3}
+  m_PrefabInstance: {fileID: 6476995809200025201}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6476995809200025201
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -492,6 +540,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3220397894091594500, guid: d81c249ff3f4a904c9a1c3cc45d110e7, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4540228999468650948}
+    - targetCorrespondingSourceObject: {fileID: 3220397894091594500, guid: d81c249ff3f4a904c9a1c3cc45d110e7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4540228999468650949}
   m_SourcePrefab: {fileID: 100100000, guid: d81c249ff3f4a904c9a1c3cc45d110e7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

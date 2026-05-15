@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using InControl;
 
 [RequireComponent(typeof(CharacterController))]
 public class CheapCharController : MonoBehaviour
@@ -16,33 +15,25 @@ public class CheapCharController : MonoBehaviour
     float _verticalVelocity;
 
     void Awake() {
-        InputManager.OnDeviceAttached += OnDeviceAttached;
-        ca = CharacterActions.GetDefaultPlayerActions();
-        ca.Enabled = true;
+        ca = new CharacterActions();
         _cc = GetComponent<CharacterController>();
         _verticalVelocity = 0f;
-
-        Debug.LogFormat("Currently active device: {0}", InputManager.ActiveDevice);
     }
 
     void Update()
     {
-        Vector2 input = ca.Move.Value;
+        Vector2 input = ca.MoveValue;
 
         Vector3 moveDir = ComputeMoveDirection(input);
         bool isMoving = moveDir.sqrMagnitude > 0.01f;
 
+        characterAnimator.SetFloat("ForwardOrBackward", isMoving ? input.magnitude * 0.5f : 0f);
+        characterAnimator.SetFloat("LeftOrRight", 0f);
+
         if(isMoving)
         {
             RotateCharacterToward(moveDir);
-            characterAnimator.SetFloat("ForwardOrBackward", 0.5f);
         }
-        else
-        {
-            characterAnimator.SetFloat("ForwardOrBackward", 0f);
-        }
-
-        characterAnimator.SetFloat("LeftOrRight", 0f);
 
         ApplyGravity();
         Vector3 movement = moveDir * _moveSpeed + Vector3.up * _verticalVelocity;
@@ -86,8 +77,8 @@ public class CheapCharController : MonoBehaviour
         }
     }
 
-    private void OnDeviceAttached(InputDevice device)
+    private void OnDestroy()
     {
-        Debug.LogFormat("Current device : {0}", device.GetType());
+        ca?.Dispose();
     }
 }

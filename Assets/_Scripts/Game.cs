@@ -9,17 +9,20 @@ public class Game : MonoBehaviour
 
     public static AssetManager AssetManager { get; private set; }
     public static WindowsManager WindowsManager { get; private set; }
-    public static CanvasManager CanvasManager { get; private set; } 
+    public static CanvasManager CanvasManager { get; private set; }
 
-    // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        InputManager.Initialize();
     }
 
-    // Update is called once per frame
+    void Start()
+    {
+
+    }
+
     void Update()
     {
-        
+
     }
 }
